@@ -18,13 +18,16 @@ from django.urls import path
 from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('adminlogin/',views.adminLogin, name = 'admin_login'),
 
-    path('validateadmin/',views.validateAdmin,name = 'validate_admin'),
+    path('adminlogin/',views.adminLogin, name = 'adminlogin'),
 
-    path('adminwelcome/',views.adminWelcome,name = 'admin_welcome'),
+    path('validateadmin/',views.validateAdmin,name = 'validateadmin'),
 
-    path('addnewcourse/',views.addNewCourse,name = 'add_new_course'),
+    path('adminwelcome/',views.adminWelcome,name = 'adminwelcome'),
 
-    path('adminlogout/',views.adminLogout,name = 'admin_logout')
+    path('addnewcourse/',views.addNewCourse,name = 'addnewcourse'),
+
+    path('savecourse/',views.saveCourse,name = 'savecourse'),
+
+    path('adminlogout/',views.adminLogout,name = 'adminlogout')
     ]

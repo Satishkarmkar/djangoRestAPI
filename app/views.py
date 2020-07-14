@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from app.models import AdminModel,AddCourseModel
+from app.models import AdminModel
+from app.models import AddCourseModel
 
 # Create your views here.
 
@@ -21,21 +22,24 @@ def validateAdmin(request):
         return render(request,"admin_welcome.html")
     except AdminModel.DoesNotExist:
         messages.error(request,"Invalid User")
-        return redirect('admin_login')
+        return redirect('adminlogin')
 
 def addNewCourse(request):
-    cno = request.POST.get("c0")
-    cname = request.POST.get("c1")
-    fname = request.POST.get("c2")
-    cdate = request.POST.get("c3")
-    ctime = request.POST.get("c4")
-    fee = request.POST.get("c5")
-    dur = request.POST.get("c6")
-    print((cno,cname,fname,cdate,ctime,fee,dur))
-    course = AddCourseModel(cno=cno,cname=cname,fname=fname,cdate=cdate,ctime=ctime,fee=fee,dur=dur)
-    course.save()
-    return redirect('add_new_course')
 
+    return render(request,'add_new_course.html')
+
+def saveCourse(request):
+    courseno = request.POST.get("c0")
+    coursename = request.POST.get("c1")
+    facultyname = request.POST.get("c2")
+    coursedate = request.POST.get("c3")
+    coursetime = request.POST.get("c4")
+    coursefee = request.POST.get("c5")
+    courasedur = request.POST.get("c6")
+    # print(courseno, coursename, facultyname, coursedate, coursetime, coursefee, courasedur)
+    AddCourseModel(cno=courseno, cname=coursename, fname=facultyname, cdate=coursedate, ctime=coursetime, fee=coursefee,dur=courasedur).save()
+
+    return redirect('addnewcourse')
 
 def adminLogout(request):
     return render(request,'admin_login.html')
