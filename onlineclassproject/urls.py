@@ -29,5 +29,7 @@ urlpatterns = [
 
     path('savecourse/',views.saveCourse,name = 'savecourse'),
 
+    path('viewallcourse/',views.viewAllCourse,name = 'viewallcourse'),
+
     path('adminlogout/',views.adminLogout,name = 'adminlogout')
     ]

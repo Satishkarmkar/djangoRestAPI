@@ -35,11 +35,16 @@ def saveCourse(request):
     coursedate = request.POST.get("c3")
     coursetime = request.POST.get("c4")
     coursefee = request.POST.get("c5")
-    courasedur = request.POST.get("c6")
+    coursedur = request.POST.get("c6")
     # print(courseno, coursename, facultyname, coursedate, coursetime, coursefee, courasedur)
-    AddCourseModel(cno=courseno, cname=coursename, fname=facultyname, cdate=coursedate, ctime=coursetime, fee=coursefee,dur=courasedur).save()
-
+    AddCourseModel(cno=courseno, cname=coursename, fname=facultyname, cdate=coursedate, ctime=coursetime, fee=coursefee,dur=coursedur).save()
+    messages.success(request,"New Course Added")
     return redirect('addnewcourse')
+
+def viewAllCourse(request):
+    coursedata = AddCourseModel.objects.all()
+    print(coursedata)
+    return render(request,"view_all_courses.html",{"data":coursedata}),
 
 def adminLogout(request):
     return render(request,'admin_login.html')

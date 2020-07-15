@@ -57,6 +57,16 @@
             <button type="submit" class="btn btn-success">Save</button>
         </th>
     </tr>
+            {% for x in messages %}
+                <tr>
+                <th class="admin_login">
+                    <div class="alert alert-success" role="alert">
+                        {{ x }}
+                    </div>
+                </th>
+                </tr>
+
+    {% endfor %}
 
     </table>
     </form>
