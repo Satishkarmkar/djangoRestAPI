@@ -1,0 +1,69 @@
+{% extends 'common.html' %}
+{% block abc %}
+    {% include 'admin_menu.html' %}
+
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Course No</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Faculty Name</th>
+      <th scope="col">Course Date</th>
+      <th scope="col">Course Time</th>
+      <th scope="col">Course Fee</th>
+        <th scope="col">Course Duration(In Days)</th>
+        <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+{#    {% for x in data %}#}
+        <tr>
+        <form action="{% url 'saveedit' %}"method="post">
+                {% csrf_token %}
+            <td>
+              <div class="form-group">
+                  <input type="number" class="form-control" id="inputNumber" value="{{ x.cno }}" name="c0">
+              </div>
+            </td>
+
+            <td>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="inputName" value="{{ x.cname }}" name="c1">
+              </div>
+            </td>
+
+             <td>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="inputName" value="{{ x.fname}}" name="c2">
+              </div>
+            </td>
+             <td>
+              <div class="form-group">
+                  <input type="date"  class="form-control" id="inputDate" value="{{ x.cdate }}" name="c3">
+              </div>
+             </td>
+             <td>
+              <div class="form-group">
+                  <input type="time" class="form-control" id="inputTime" value="{{ x.ctime }}" name="c4">
+              </div>
+            </td>
+             <td>
+              <div class="form-group">
+                  <input type="number" class="form-control" id="inputNumber" value="{{ x.fee }}" name="c5">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                  <input type="number" class="form-control" id="inputNumber" value="{{ x.dur }}" name="c6">
+              </div>
+            </td>
+        <td><button type="submit" class="btn btn-info">Save</button></td>
+        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </form>
+        </tr>
+{#    {% endfor %}#}
+  </tbody>
+</table>
+
+{% endblock %}

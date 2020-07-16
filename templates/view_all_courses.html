@@ -2,35 +2,35 @@
 {% block abc %}
     {% include 'admin_menu.html' %}
 
-    {{ data }}
-
-{#    <table class="table table-striped">#}
-{#  <thead>#}
-{#    <tr>#}
-{#      <th scope="col">Course No</th>#}
-{#      <th scope="col">Course Name</th>#}
-{#      <th scope="col">Faculty Name</th>#}
-{#      <th scope="col">Course Date</th>#}
-{#      <th scope="col">Course Time</th>#}
-{#      <th scope="col">Course Fee</th>#}
-{#      <th scope="col">Course Duration (In Days)</th>#}
-{#      <th scope="col">Edit</th>#}
-{#      <th scope="col">Delete</th>#}
-{#    </tr>#}
-{#  </thead>#}
-{#  <tbody>#}
-{#    <tr>#}
-{#      <th scope="row">1</th>#}
-{#      <td>Mark</td>#}
-{#      <td>Otto</td>#}
-{#      <td>@mdo</td>#}
-{#      <td>@mdo</td>#}
-{#      <td>@mdo</td>#}
-{#      <td>@mdo</td>#}
-{#      <td><button type="button" class="btn btn-info">Edit</button></td>#}
-{#      <td><button type="button" class="btn btn-danger">Delete</button></td>#}
-{#    </tr>#}
-{#  </tbody>#}
-{#</table>#}
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Course No</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Faculty Name</th>
+      <th scope="col">Course Date</th>
+      <th scope="col">Course Time</th>
+      <th scope="col">Course Fee</th>
+        <th scope="col">Course Duration(In Days)</th>
+        <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in data %}
+        <tr>
+        <td>{{ x.cno }}</td>
+        <td>{{ x.cname }}</td>
+        <td>{{ x.fname }}</td>
+        <td>{{ x.cdate }}</td>
+        <td>{{ x.ctime }}</td>
+        <td>{{ x.fee }}</td>
+        <td>{{ x.dur }}</td>
+        <td><a href="{% url 'editcourse' %}"><button type="button" class="btn btn-info">Edit</button></a> </td>
+        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock %}

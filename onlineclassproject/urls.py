@@ -31,5 +31,9 @@ urlpatterns = [
 
     path('viewallcourse/',views.viewAllCourse,name = 'viewallcourse'),
 
+    path('editcourse/',views.editCourse,name = 'editcourse'),
+
+    path('saveedit/',views.saveEdit,name = 'saveedit'),
+
     path('adminlogout/',views.adminLogout,name = 'adminlogout')
     ]

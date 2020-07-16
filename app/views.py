@@ -43,8 +43,26 @@ def saveCourse(request):
 
 def viewAllCourse(request):
     coursedata = AddCourseModel.objects.all()
-    print(coursedata)
-    return render(request,"view_all_courses.html",{"data":coursedata}),
+    # print(coursedata)
+    return render(request,"view_all_courses.html",{"data":coursedata})
+
+def editCourse(request):
+    data = AddCourseModel.objects.all()
+    return render(request,'editcourse.html',{"data":data})
+
+def saveEdit(request):
+    courseno = request.GET.get("c0")
+
+    courseno = request.POST.get("c0")
+    coursename = request.POST.get("c1")
+    facultyname = request.POST.get("c2")
+    coursedate = request.POST.get("c3")
+    coursetime = request.POST.get("c4")
+    coursefee = request.POST.get("c5")
+    coursedur = request.POST.get("c6")
+
+    AddCourseModel.objects.filter(cno=courseno).update(cno=courseno, cname=coursename, fname=facultyname, cdate=coursedate, ctime=coursetime, fee=coursefee,dur=coursedur)
+    return redirect('viewallcourse')
 
 def adminLogout(request):
     return render(request,'admin_login.html')
