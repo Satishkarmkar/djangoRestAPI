@@ -31,9 +31,25 @@ urlpatterns = [
 
     path('viewallcourse/',views.viewAllCourse,name = 'viewallcourse'),
 
-    path('editcourse/',views.editCourse,name = 'editcourse'),
+    path('editcourse/<int:pk>/',views.editCourse,name = 'editcourse'),
 
     path('saveedit/',views.saveEdit,name = 'saveedit'),
 
-    path('adminlogout/',views.adminLogout,name = 'adminlogout')
+    path('deletecourse/<int:pk>/',views.deleteCourse,name='deletecourse'),
+
+    path('adminlogout/',views.adminLogout,name = 'adminlogout'),
+
+    path('studentregistration/',views.studentRegistration,name= 'studentregistration'),
+
+    path('saveregistration/',views.saveRegistration,name= 'saveregistration'),
+
+    path('studenthome/',views.studentHome,name='studenthome'),
+
+    path('enrollcourse/',views.enrollCourse,name='enrollcourse'),
+
+    # path('getcourse/',views.getCourse,name='getcourse'),
+
+    path('viewallenrolledcourse/',views.viewAllEnrolledCourse,name='viewallenrolledcourse'),
+
+    path('cancelenrolledcourse/',views.cancelenrolledcourse,name='cancelenrolledcourse')
     ]

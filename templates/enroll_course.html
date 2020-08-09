@@ -1,10 +1,12 @@
 {% extends 'common.html' %}
 {% block abc %}
-    {% include 'admin_menu.html' %}
-
-    <table class="table table-striped">
+    {% include 'student_menu.html' %}
+    <form method="post" action="#">
+    {% csrf_token %}
+        <table class="table table-striped">
   <thead>
     <tr>
+      <th scope="col">Student mob</th>
       <th scope="col">Course No</th>
       <th scope="col">Course Name</th>
       <th scope="col">Faculty Name</th>
@@ -12,13 +14,13 @@
       <th scope="col">Course Time</th>
       <th scope="col">Course Fee</th>
         <th scope="col">Course Duration(In Days)</th>
-        <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+        <th scope="col">Enroll</th>
     </tr>
   </thead>
   <tbody>
     {% for x in data %}
         <tr>
+        <td>{{ studata }}</td>
         <td>{{ x.cno }}</td>
         <td>{{ x.cname }}</td>
         <td>{{ x.fname }}</td>
@@ -26,11 +28,11 @@
         <td>{{ x.ctime }}</td>
         <td>{{ x.fee }}</td>
         <td>{{ x.dur }}</td>
-        <td><a href="{% url 'editcourse' pk=x.cno %}"><button type="button" class="btn btn-info">Edit</button></a> </td>
-            <td><a href="{% url 'deletecourse' pk=x.cno %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+        <td><button type="submit" class="btn btn-info">Enroll</button></td>
         </tr>
     {% endfor %}
   </tbody>
 </table>
+    </form>
 
 {% endblock %}

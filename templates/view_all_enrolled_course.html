@@ -1,7 +1,6 @@
 {% extends 'common.html' %}
 {% block abc %}
-    {% include 'admin_menu.html' %}
-
+    {% include 'student_menu.html' %}
     <table class="table table-striped">
   <thead>
     <tr>
@@ -12,8 +11,7 @@
       <th scope="col">Course Time</th>
       <th scope="col">Course Fee</th>
         <th scope="col">Course Duration(In Days)</th>
-        <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Cancel</th>
     </tr>
   </thead>
   <tbody>
@@ -26,11 +24,9 @@
         <td>{{ x.ctime }}</td>
         <td>{{ x.fee }}</td>
         <td>{{ x.dur }}</td>
-        <td><a href="{% url 'editcourse' pk=x.cno %}"><button type="button" class="btn btn-info">Edit</button></a> </td>
-            <td><a href="{% url 'deletecourse' pk=x.cno %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+            <td><a href="{% url 'deletecourse' pk=x.cno %}"><button type="button" class="btn btn-danger">Cancel</button></a></td>
         </tr>
     {% endfor %}
   </tbody>
 </table>
-
 {% endblock %}
