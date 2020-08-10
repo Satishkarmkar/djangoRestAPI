@@ -119,7 +119,8 @@ def saveRegistration(request):
 
 
 def studentHome(request):
-    return render(request,"studenthome.html")
+    uname = request.GET.get("una")
+    return render(request,"studenthome.html",{"stname":uname})
 
 
 #**********************Student Course Enrollment Section*******************
@@ -127,7 +128,6 @@ def studentHome(request):
 def enrollCourse(request):
     stu_mob = request.GET.get("s3")
     cdata = AddCourseModel.objects.all()
-    # availcoursedata = AddCourseModel.objects.all()
     return render(request,"enroll_course.html",{ "data":cdata,"studata":stu_mob })
 #
 # def getCourse(request):
